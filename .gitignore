@@ -1,0 +1,10 @@
+.env
+.vscode
+node_modules/
+bwd
+
+yarn.lock
+.cc
+.cpp
+.h
+.hpp
