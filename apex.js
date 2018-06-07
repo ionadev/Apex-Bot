@@ -9,8 +9,5 @@ new Apex().login(require('./config').TOKEN).catch(console.error);
 module.exports = {
 
 	// Export everything from Klasa
-	...klasa,
-
-	MusicCommand: require('./lib/Stores/MusicCommand')
-
+	...klasa
 };
