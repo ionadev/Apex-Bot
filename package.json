@@ -22,6 +22,7 @@
     "idiotic-api": "^0.2.4",
     "imgflipper": "^1.0.1",
     "klasa": "dirigeants/klasa",
+    "rethinkdbdash": "^2.3.31",
     "prism-media": "github:hydrabolt/prism-media",
     "simple-youtube-api": "^5.0.2",
     "splashy": "^2.0.3",
