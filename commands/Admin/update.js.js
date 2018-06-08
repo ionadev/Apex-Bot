@@ -20,5 +20,4 @@ module.exports = class extends Command {
               this.client.commands.get('reboot').run(message);
             }
         }
-    }
 };
