@@ -10,7 +10,6 @@ module.exports = class extends Finalizer {
 
     run(msg, mes, start) {
         this.client.commandsUsed++;
-        this.client.pingArray.push(Math.round(this.client.ping))
     }
 
 };
