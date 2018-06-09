@@ -29,6 +29,6 @@
     "ytdl-core": "^0.20.2"
   },
   "devDependencies": {
-    "eslint-config-klasa": "dirigeants/klasa-lint"
+    "eslint-config-klasa": "github:dirigeants/klasa-lint"
   }
 }

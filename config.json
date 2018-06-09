@@ -6,5 +6,10 @@
     "TYPING": true ,
     "api_keys": {
       "idiotic_api": "NtChvgheE0LE/33WIOBg"
+    },
+    "lavalink": {
+      "restnode": {
+        "port": 5201
+      }
     }
 }

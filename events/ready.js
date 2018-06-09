@@ -3,15 +3,14 @@ const config = require('../config');
 
 module.exports = class extends Event {
 
-	constructor(...args) {
-		super(...args, { 
-			enabled: true
-		});
+	async run() {
+		if (!await this.r.dbList().run().includes('apex')) await this.r.dbCreate('apex').run();
+		this.client.commands.get('conf').permissionLevel = 3;
+		this.client.user.setActivity(`${config.PRODUCTION ? config.PRODUCTIONPREFIX : config.DEVPREFIX}help | ${this.client.guilds.size} servers`);
 	}
 
-	run() {
-		this.client.commands.get('conf').permissionLevel = 3 
-		this.client.user.setActivity(`${config.PRODUCTION ? config.PRODUCTIONPREFIX : config.DEVPREFIX}help | ${this.client.guilds.size} servers`);
+	get r() {
+		return this.client.providers.get('rethinkdb').db;
 	}
 
 };
