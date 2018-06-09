@@ -17,7 +17,8 @@ module.exports = class extends Command {
 
 	async run(msg, [query]) {
 		let player = Player.getPlayer(msg.guild.id);
-		if (!player) player = new Player(this.client, this.client._player, msg.guild);
+		if (!player) player = new Player(this.client, this.client._player, msg.guild)
+		player.textChannelID = msg.channel.id
 		if ('soundcloud' in msg.flags) query = `scsearch:${query}`;
 		let item;
 		if ('choose' in msg.flags) {
