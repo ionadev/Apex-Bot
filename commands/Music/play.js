@@ -18,17 +18,17 @@ module.exports = class extends Command {
 	async run(msg, [query]) {
 		let player = Player.getPlayer(msg.guild.id);
 		if (!player) player = new Player(this.client, this.client._player, msg.guild)
-		player.textChannelID = msg.channel.id
+		player.textChannelID = msg.channel.id;
 		if ('soundcloud' in msg.flags) query = `scsearch:${query}`;
 		let item;
 		if ('choose' in msg.flags) {
-			item = await player.add(query, async songs => {
+			item = await player.add(msg.author, query, async songs => {
 				prompt(this, songs
 					.map(({ author, title }, i) => `${i + 1}). ${title} \`${author}\``)
 					.join('\n'));
 			});
 		} else {
-			item = await player.add(query);
+			item = await player.add(msg.author, query);
 		}
 		const musicPlayer = this.client._player.join({
 			guild: msg.guild.id,
@@ -36,7 +36,7 @@ module.exports = class extends Command {
 			host: this.client._player.nodes.first().host
 		});
 		if (!musicPlayer.playing) player.play(musicPlayer);
-		if (Array.isArray(item)) return msg.send(`Queued a total **${item.length} songs.`);
+		if (Array.isArray(item)) return msg.send(`Added **${item.length} songs to the queue`);
 		return msg.send(`Added **${item.title}** to the queue.`);
 	}
 
