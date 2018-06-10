@@ -35,7 +35,7 @@ module.exports = class extends Command {
 			channel: msg.member.voiceChannelID,
 			host: this.client._player.nodes.first().host
 		});
-		if (!player.playing) player.play(musicPlayer);
+		if (!musicPlayer.playing) player.play(musicPlayer);
 		if (Array.isArray(item)) return msg.send(`Queued a total **${item.length} songs.`);
 		return msg.send(`Added **${item.title}** to the queue.`);
 	}
