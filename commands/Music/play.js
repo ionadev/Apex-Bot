@@ -1,6 +1,4 @@
 const { Command } = require('klasa');
-const Player = require('../../lib/Player');
-
 module.exports = class extends Command {
 
 	constructor(...args) {
