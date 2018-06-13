@@ -17,7 +17,7 @@ module.exports = class extends Command {
 		if (!player.currentSong) throw 'No songs playing!';
 		else if (page > Math.ceil(player.queue.length / 15)) page = Math.ceil(player.queue.length / 15);
 
-		return msg.sendEmbed(player.queue(page));
+		return msg.sendEmbed(player.showQueue(page));
 	}
 
 };

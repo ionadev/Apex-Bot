@@ -1,5 +1,6 @@
 const { Command } = require('klasa');
 const Player = require('../../lib/Player');
+
 module.exports = class extends Command {
 
 	constructor(...args) {
@@ -51,7 +52,7 @@ module.exports = class extends Command {
 async function prompt(songs, msg) {
 	songs = songs.slice(0, 5);
 	await msg.channel.send([`🎵 **Top 5 searches**, choose a selection:\n`,
-		`${songs.map((song, i) => `${i + 1}. [${song.title}](${song.uri}) by ${song.author} - ${Player.showSeconds(song.length)}`)}`
+		`${songs.map((song, i) => `${i + 1}. [${song.title}](${song.uri}) by ${song.author} - ${Player.showSeconds(song.length)}`).join('\n')}`
 	].join('\n'));
 	const messages = await msg.channel.awaitMessages(message => message.author === msg.author && parseInt(message.content));
 	if (!messages || !messages.size) throw 'No selection chosen: aborting prompt.';
