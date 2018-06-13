@@ -36,7 +36,7 @@ module.exports = class extends Command {
 		} else {
 			item = await player.add(msg.author, query);
 		}
-		if (Array.isArray(item)) await msg.send(`Added **${item.length} songs to the queue`);
+		if (Array.isArray(item)) await msg.send(`Added **${item.length}** songs to the queue`);
 		else await msg.send(`Added **${item.title}** to the queue.`);
 		const musicPlayer = await this.client._player.join({
 			guild: msg.guild.id,
@@ -54,7 +54,7 @@ async function prompt(songs, msg) {
 	await msg.channel.send([`🎵 **Top 5 searches**, choose a selection:\n`,
 		`${songs.map((song, i) => `${i + 1}. [${song.title}](${song.uri}) by ${song.author} - ${Player.showSeconds(song.length)}`).join('\n')}`
 	].join('\n'));
-	const messages = await msg.channel.awaitMessages(message => message.author === msg.author && parseInt(message.content));
+	const messages = await msg.channel.awaitMessages(message => message.author === msg.author && parseInt(message.content), { time: 45000 });
 	if (!messages || !messages.size) throw 'No selection chosen: aborting prompt.';
 	const selection = messages.first().content;
 	const vid = parseInt(selection);
