@@ -26,12 +26,13 @@ module.exports = class extends Command {
 		if ('soundcloud' in msg.flags) query = `scsearch:${query}`;
 		let item;
 		if ('choose' in msg.flags) {
-			item = await player.add(msg.author, query, true);
+			item = await player.resolve(query, true);
 			if (item.length === 1) {
 				await msg.channel.send(`Found only one selection: **${item[0].title}**`);
 				[item] = item;
 			} else {
 				item = await prompt(item, msg);
+				player.queue.push(Object.assign({ requester: msg.author }, item));
 			}
 		} else {
 			item = await player.add(msg.author, query);
