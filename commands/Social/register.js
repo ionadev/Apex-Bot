@@ -27,7 +27,7 @@ module.exports = class extends Command {
 
 	async init() {
 		// eslint-disable-next-line id-length
-		this.r = this.client.providers.get('rethinkdb');
+		this.r = this.client.providers.get('rethinkdb').db;
 	}
 
 };
