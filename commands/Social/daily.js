@@ -19,6 +19,7 @@ module.exports = class extends Command {
 		const social = await this.r.table('social').get(msg.author.id).run();
 		if (Date.now() - social.dailyTime < this.DAY) throw 'You can collect dailies only once a day.';
 		social.points += 100;
+		social.dailyTime = Date.now();
 		await this.r.table('social').update(social).run();
 		return msg.send('Succesfully collected your daily reward.');
 	}
