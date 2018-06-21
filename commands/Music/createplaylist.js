@@ -32,7 +32,7 @@ module.exports = class extends Command {
 				let output;
 				const songs = playlist.map((song, index) => `${index + 1}; ${song.title} - ${song.author}`).join('\n');
 				if (playlist.length > 20) {
-					output = await this.hastebin(songs);
+					output = `Raw playlist content: ${await this.hastebin(songs)}`;
 				} else {
 					output = [
 						`Playlist #${num + 1}`,
@@ -51,9 +51,13 @@ module.exports = class extends Command {
 					output.push(`Playlist #${index + 1}`);
 					output.push(songs);
 					output.push('');
-				})
+				});
+				const haste = await this.hastebin(output);
+				return msg.send(`Raw playlist contents: ${haste}`);
 			}
 		}
+
+		const userPlaylist = await 
 	}
 
 	async checkPremium(msg) {

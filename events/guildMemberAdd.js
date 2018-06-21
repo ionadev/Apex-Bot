@@ -39,7 +39,7 @@ module.exports = class extends Event {
 	}
 
 	async stickyroles(member, stickyroles) {
-		const stickymember = stickyroles.find(mem => mem.id === member.id);
+		const stickymember = stickyroles.members.find(mem => mem.id === member.id);
 		Promise.all(stickymember.roles.map(role => member.roles.add(role).catch(() => null)));
 	}
 
