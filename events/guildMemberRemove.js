@@ -5,6 +5,8 @@ module.exports = class extends Event {
 	async run(member) {
 		if (member.guild.configs.welcomer.channel && member.guild.configs.welcomer.farewell) await this.farewell(member);
 		if (member.guild.configs.channels.memberlog) await this.memberlog(member);
+		const stickyroles = await this.r.table('stickyroles').get(member.guild.id).run();
+		if (stickyroles && stickyroles.enabled && member.roles.size) await this.stickyroles(member);
 	}
 
 	async farewell(member) {
@@ -30,6 +32,22 @@ module.exports = class extends Event {
 				.setTimestamp()
 				.setFooter('Left', this.client.user.displayAvatarURL())
 		});
+	}
+
+	async stickyroles(member) {
+		const stickyroles = await this.r.table('stickyroles').get(member.guild.id).run();
+		const check = stickyroles.members.find(mem => mem.id === member.id);
+		if (check) stickyroles.splice(stickyroles.members.indexOf(check), 1);
+		stickyroles.members.push({
+			id: member.id,
+			roles: member.roles.map(role => role.id)
+		});
+		await this.r.table('stickyroles').update(stickyroles);
+		return null;
+	}
+
+	get r() {
+		return this.client.providers.default.db;
 	}
 
 

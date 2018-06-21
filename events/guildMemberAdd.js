@@ -6,6 +6,8 @@ module.exports = class extends Event {
 		if (member.guild.configs.welcomer.channel && member.guild.configs.welcomer.greeting) await this.greet(member);
 		if (member.guild.configs.channels.memberlog) await this.memberlog(member);
 		if (member.guild.configs.roles.auto.length) await this.autorole(member);
+		const stickyroles = await this.r.table('stickyroles').get(member.guild.id).run();
+		if (stickyroles && stickyroles.enabled && stickyroles.members.find(mem => mem.id === member.id)) await this.stickyroles(member, stickyroles);
 	}
 
 	async greet(member) {
@@ -16,7 +18,7 @@ module.exports = class extends Event {
 			.replace(/{membername}/g, member.user.username)
 			.replace(/{membertag}/g, member.user.tag)
 			.replace(/{server}/g, member.guild.name)
-		).catch(() => null)
+		).catch(() => null);
 	}
 
 	async memberlog(member) {
@@ -33,7 +35,16 @@ module.exports = class extends Event {
 	}
 
 	async autoRole(member) {
-		await Promise.all(member.guild.configs.roles.auto.map(role => member.roles.add(role))).catch(() => null)
+		await Promise.all(member.guild.configs.roles.auto.map(role => member.roles.add(role))).catch(() => null);
+	}
+
+	async stickyroles(member, stickyroles) {
+		const stickymember = stickyroles.find(mem => mem.id === member.id);
+		Promise.all(stickymember.roles.map(role => member.roles.add(role).catch(() => null)));
+	}
+
+	get r() {
+		return this.client.providers.default.db;
 	}
 
 

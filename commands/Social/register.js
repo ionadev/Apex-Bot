@@ -18,7 +18,7 @@ module.exports = class extends Command {
 			points: 0,
 			reputation: 0,
 			level: 0,
-			dailyTime: Date.now(),
+			dailyTime: 0,
 			id: msg.author.id
 		}).run();
 		const { prefix } = msg.guild.configs;
