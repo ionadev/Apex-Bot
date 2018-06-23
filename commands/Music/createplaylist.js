@@ -56,8 +56,6 @@ module.exports = class extends Command {
 				return msg.send(`Raw playlist contents: ${haste}`);
 			}
 		}
-
-		const userPlaylist = await 
 	}
 
 	async checkPremium(msg) {
