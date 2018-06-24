@@ -25,6 +25,7 @@
     "js-couchdb": "^1.0.0",
     "klasa": "dirigeants/klasa",
     "prism-media": "github:hydrabolt/prism-media",
+    "redis-nextra": "^0.1.0",
     "rethinkdbdash": "^2.3.31",
     "simple-youtube-api": "^5.0.2",
     "splashy": "^2.0.3",
