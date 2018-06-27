@@ -1,5 +1,6 @@
 const { Event } = require('klasa');
 const config = require('../config');
+const r = require("rethinkdbdash");
 
 module.exports = class extends Event {
 

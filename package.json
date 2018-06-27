@@ -7,9 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node apex.js --expose-gc"
   },
-  "engines": {
-    "node": "10.1.0"
-  },
   "author": "Soumil07",
   "license": "MIT",
   "dependencies": {
