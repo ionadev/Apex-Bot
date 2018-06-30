@@ -6,10 +6,10 @@ module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
 			bucket: 2,
-      cooldown: 4,
+			cooldown: 4,
 
 			description: 'Sends a random Chuck Norris joke.',
-      extendedHelp: 'Powered by https://api.chucknorris.io',
+			extendedHelp: 'Powered by https://api.chucknorris.io'
 		});
 	}
 

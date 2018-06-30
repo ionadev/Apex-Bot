@@ -4,16 +4,16 @@ module.exports = class extends Command {
 
 	constructor(...args) {
 		super(...args, {
-            aliases: ['8', 'magic', '8ball', 'mirror'],
-            bucket: 2,
-            cooldown: 5,
+			aliases: ['8', 'magic', '8ball', 'mirror'],
+			bucket: 2,
+			cooldown: 5,
 
 			description: 'Magic 8-Ball, does exactly what the toy does.',
 			usage: '<query:str>'
-        });
-        
-        this
-            .customizeResponse('query', 'What would you like to ask the magic 8ball?')
+		});
+
+		this
+			.customizeResponse('query', 'What would you like to ask the magic 8ball?');
 	}
 
 	async run(msg, [question]) {

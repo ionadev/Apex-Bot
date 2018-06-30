@@ -24,6 +24,7 @@ module.exports = class extends Command {
 			.addField('RAM (Total)', `${Math.round(100 * (process.memoryUsage().heapTotal / 1048576)) / 100}MB`, true)
 			.addField('CPU Usage', `${Math.round(loadavg()[0] * 100) / 100}%`, true)
 			.addField('Uptime', Duration.toNow(Date.now() - (process.uptime() * 1000)), true)
+			.addField('Shard', this.client.shard.id)
 			.addField('Commands run', this.client.commandsUsed));
 	}
 

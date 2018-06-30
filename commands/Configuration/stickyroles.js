@@ -10,7 +10,9 @@ module.exports = class extends Command {
 			bucket: 2,
 			description: 'Enables sticky roles.',
 			usage: '[nobots]',
-			extendedHelp: 'This command helps you update the prefix of the bot. If no arguments are used, shows you the current prefix.'
+			extendedHelp: ['If sticky roles are enabled a person leaves and rejoins, Apex will give him his roles back.',
+				'This makes those roles "stick". Disable sticky roles by using this command when they are enabled.'
+			].join('\n');
 		});
 	}
 

@@ -13,7 +13,7 @@ module.exports = class extends Command {
 		});
 
 		this
-			.customizeResponse('message', 'What would you like to send?')
+			.customizeResponse('message', 'What would you like to send?');
 	}
 
 	async run(msg, [channel = msg.channel, ...message]) {

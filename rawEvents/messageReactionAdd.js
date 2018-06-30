@@ -8,12 +8,12 @@ module.exports = class extends RawEvent {
 
 	async run({ message_id, channel_id, user_id }) {
 		const channel = this.client.channels.get(channel_id);
-    if (channel.messages.has(message_id)) return;
-    const user = this.client.users.get(user_id);
-    const message = await channel.messages.fetch(message_id);
- 
-    const react = message.reactions.get('⭐');
-    if (react) this.client.events.get('messageReactionAdd').run(react, user);
+		if (channel.messages.has(message_id)) return;
+		const user = this.client.users.get(user_id);
+		const message = await channel.messages.fetch(message_id);
+
+		const react = message.reactions.get('⭐');
+		if (react) this.client.events.get('messageReactionAdd').run(react, user);
 	}
 
 };

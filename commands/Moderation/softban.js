@@ -9,9 +9,9 @@ module.exports = class extends Command {
 			runIn: ['text'],
 
 			description: 'Softbans a mentioned user.',
-      extendedHelp: 'Softbanning a user bans him from the server and then unbans him, deleting his past messages since the specified days.',
-      usage: '<member:user> [days:int{1,7}] [reason:string]',
-			usageDelim: ' '   
+			extendedHelp: 'Softbanning a user bans him from the server and then unbans him, deleting his past messages since the specified days.',
+			usage: '<member:user> [days:int{1,7}] [reason:string]',
+			usageDelim: ' '
 		});
 	}
 
@@ -30,7 +30,7 @@ module.exports = class extends Command {
 		if (reason) options.reason = reason;
 
 		await msg.guild.members.ban(user, options);
-    await msg.guild.moderation.register('ban', reason, msg.author, user)
+		await msg.guild.moderation.register('ban', reason, msg.author, user);
 		await msg.guild.members.unban(user, 'Softban released.');
 		return msg.sendMessage(`${member.user.tag} got softbanned.${reason ? ` With reason of: ${reason}` : ''}`);
 	}

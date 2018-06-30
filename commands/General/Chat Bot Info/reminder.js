@@ -28,13 +28,13 @@ module.exports = class extends Command {
 			await this.client.schedule.delete(msg.flags.delete);
 			return msg.send('Succesfully deleted the reminder.');
 		}
-    
-    if (msg.flags.when) {
-      const idOrNumber = Number.isInteger(Number(msg.flags.when));
-      if (idOrNumber === false) throw 'The reminder number must be a valid number.';
-      const reminder = this.client.schedule.tasks.filter(task => task.taskName === 'reminder' && task.data.user === msg.author.id)[Number(msg.flags.when) - 1]
-      return msg.sendMessage(`Your reminder number ${msg.flags.when} expires in ${Duration.toNow(reminder.time)}`);
-    }
+
+		if (msg.flags.when) {
+			const idOrNumber = Number.isInteger(Number(msg.flags.when));
+			if (idOrNumber === false) throw 'The reminder number must be a valid number.';
+			const reminder = this.client.schedule.tasks.filter(task => task.taskName === 'reminder' && task.data.user === msg.author.id)[Number(msg.flags.when) - 1];
+			return msg.sendMessage(`Your reminder number ${msg.flags.when} expires in ${Duration.toNow(reminder.time)}`);
+		}
 
 		if (msg.flags.clear) {
 			const reminders = this.client.schedule.tasks.filter(task => task.taskName === 'reminder' && task.data.user === msg.author.id);
