@@ -16,7 +16,7 @@ module.exports = class extends Event {
 	}
 
 	init() {
-		this.provider = this.client.providers.get('json');
+		this.provider = this.client.providers.get('rethinkdb');
 	}
 
 };
