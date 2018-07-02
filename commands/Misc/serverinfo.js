@@ -31,7 +31,7 @@ module.exports = class extends Command {
 		const [color] = await splashy.fromUrl(msg.guild.iconURL({ format: 'png' }));
 
 		const embed = new this.client.methods.Embed()
-			.setAuthor(`${name} (${id})`, msg.guild.iconURL())
+			.setAuthor(`${name} (${id})`, msg.guild.iconURL() || null)
 			.setColor(color)
 			.addField(
 				'Channels',
@@ -55,7 +55,7 @@ module.exports = class extends Command {
       "Users",
       `• Online users: **${gg}** (${Math.round(gg / memberCount * 100)}% users online)`, true
     )*/
-			.setThumbnail(msg.guild.iconURL());
+			.setThumbnail(msg.guild.iconURL() || null);
 
 		return msg.sendEmbed(embed);
 	}

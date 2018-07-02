@@ -96,6 +96,3 @@ module.exports = class extends Command {
 	}
 
 };
-
-/* TODO: i18n arrays for different languages... */
-const lang = { 'en-US': ['yes', 'yeah', 'yep', 'y', 'ye'] };

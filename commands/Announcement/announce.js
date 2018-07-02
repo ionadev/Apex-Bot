@@ -1,8 +1,5 @@
 const { Command, TextPrompt, Usage, util: { codeBlock } } = require('klasa');
 
-// other announcement letters
-const OTHER_CHARS = 52;
-
 module.exports = class extends Command {
 
 	constructor(...args) {
@@ -20,7 +17,6 @@ module.exports = class extends Command {
 	}
 
 	async run(msg, [announcement]) {
-		console.log(announcement);
 		const flag = Boolean(msg.flags.nomention);
 
 		if (!flag && !msg.guild.configs.roles.announcement) return msg.send(msg.language.get('COMMAND_ANNOUNCE_NOCHANNEL'));

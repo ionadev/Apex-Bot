@@ -14,9 +14,9 @@ module.exports = class extends Command {
 		if (!error) {
 			await msg.send(`ERROR: ${util.codeBlock('', stderr)}`);
 		} else {
-			if (stdout.toString().includes('Already up-to-date')) return msg.send('Repo already up to date.');
+			if (stdout.toString().toLowerCase().includes('Already up-to-date')) return msg.send('Repo already up to date.');
 			await msg.send(`SUCCESS: ${util.codeBlock('', stdout)}`);
-			this.client.commands.get('reboot').run.toString();
+			return this.client.commands.get('reboot').run();
 		}
 		return null;
 	}

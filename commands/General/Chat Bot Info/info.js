@@ -23,7 +23,7 @@ module.exports = class extends Command {
 			'',
 			'If you have any issues or want to report bugs: Join the support server at https://discord.gg/Kcez3AZ',
 			'To invite the bot in your server, use the **invite** command.',
-			'Apex has been developed by Stitch#9441.'
+			'Apex has been developed by Stitch#1836.'
 		].join('\n'));
 	}
 

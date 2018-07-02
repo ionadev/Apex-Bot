@@ -37,13 +37,8 @@ module.exports = class extends Command {
 	}
 
 	random() {
-		var chars = '0123456789ABCDEF'.split('');
-		var hex = '#';
-		for (var i = 0; i < 6; i++) {
-			hex += chars[Math.floor(Math.random() * 16)];
-		}
-
-		return this.draw(hex);
+		const r = Math.floor(Math.random() * 256 * 256 * 256 + 1);
+		return this.draw(`#${r.toString(16)}`);
 	}
 
 	draw(hex) {
