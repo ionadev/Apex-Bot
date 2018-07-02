@@ -9,10 +9,10 @@ module.exports = class extends Command {
 			description: 'Makes a decision for you given some choices.',
 			usage: '<choices:str> [...]',
 			usageDelim: ','
-        });
-        
-        this
-            .customizeResponse('choices', 'From what would you like me to choose from? Separate choices with a comma.')
+		});
+
+		this
+			.customizeResponse('choices', 'From what would you like me to choose from? Separate choices with a comma.');
 	}
 
 	async run(msg, [...choices]) {

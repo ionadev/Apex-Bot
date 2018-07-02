@@ -3,8 +3,8 @@ const { Event } = require('klasa');
 module.exports = class extends Event {
 
 	run(message) {
-    if (message.author === this.client.user) return
-    if (!message.guild) return
+		if (message.author === this.client.user) return;
+		if (!message.guild) return;
 		const { logs } = message.guildConfigs;
 		if (!logs.channel || !logs.messageDeletes) return;
 
@@ -24,7 +24,6 @@ module.exports = class extends Event {
 			if (Array.isArray(message.responses)) for (const msg of message.responses) msg.delete();
 			else message.responses.delete();
 		}
-
 	}
 
 

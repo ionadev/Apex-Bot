@@ -4,7 +4,7 @@ const snek = require('snekfetch');
 module.exports = class extends Command {
 
 	constructor(...args) {
-		super(...args, { 
+		super(...args, {
 			bucket: 2,
 			botPerms: ['EMBED_LINKS'],
 			cooldown: 5,

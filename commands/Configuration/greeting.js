@@ -38,17 +38,17 @@ module.exports = class extends Command {
 			}
 			case 'text': {
 				if (!channelOrMessage.length) throw 'You need to provide a valid greeting!';
-				channelOrMessage = channelOrMessage.join(' ');
-				const { errors, updated } = await msg.guild.configs.update('welcomer.greeting', channelOrMessage, msg.guild);
+				channelOrMessage = channelOrMessage.length === 1 ? channelOrMessage : channelOrMessage.join(' ');
+				const { errors, updated } = await msg.guild.configs.update('welcomer.greeting', channelOrMessage, msg.guild, { action: 'add' });
 				if (errors.length) return msg.sendMessage(errors[0]);
 				if (!updated.length) throw 'The greeting was already set to that value.';
-				return msg.sendMessage(`Succesfully edited ${msg.guild.name}'s greeting to ${util.codeBlock(null, channelOrMessage)}.`)
+				return msg.sendMessage(`Succesfully edited ${msg.guild.name}'s greeting to ${util.codeBlock(null, channelOrMessage)}.`);
 			}
 			case 'channel': {
 				if (!channelOrMessage.length) throw 'You need to provide a valid channel!';
-				channelOrMessage = channelOrMessage.join('\n');
-				if (!channelOrMessage instanceof TextChannel) throw 'You have to provide an appropriate channel mention or ID.';
-				await msg.guild.configs.update('welcomer.channel', channelOrMessage, msg.guild);
+				channelOrMessage = channelOrMessage.join(' ');
+				if (!(channelOrMessage instanceof TextChannel)) throw 'You have to provide an appropriate channel mention or ID.';
+				await msg.guild.configs.update('welcomer.channel', channelOrMessage, msg.guild, { action: 'add' });
 				return msg.send(`Succesfully set ${msg.guild.name}'s greeting channel to ${channelOrMessage.toString()}`);
 			}
 		}

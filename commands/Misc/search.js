@@ -20,12 +20,12 @@ module.exports = class extends Command {
 		const result = JSON.parse(body);
 		const [topic] = result.RelatedTopics;
 		    const embed = await new this.client.methods.Embed()
-                .setColor(msg.member.roles.highest.color)
-                .setURL(topic.FirstURL)
-                .setThumbnail(result.Image ? result.Image : topic.Icon.URL)
-                .setTitle(result.Heading)
-                .setDescription(result.Abstract ? result.Abstract : topic.Text)
-            return msg.send(`🔎I found the best result for your query, ${msg.author}!`, { embed: embed });
+			.setColor(msg.member.roles.highest.color)
+			.setURL(topic.FirstURL)
+			.setThumbnail(result.Image ? result.Image : topic.Icon.URL)
+			.setTitle(result.Heading)
+			.setDescription(result.Abstract ? result.Abstract : topic.Text);
+		return msg.send(`🔎I found the best result for your query, ${msg.author}!`, { embed: embed });
 	}
 
 };

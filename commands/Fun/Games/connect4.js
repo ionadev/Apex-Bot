@@ -47,12 +47,12 @@ module.exports = class extends Command {
 			.then(async (reactions) => {
 				const res = reactions.first();
 				if (res._emoji.name === '⏹') {
-          await msg.channel.send(`${this.client.users.get(usr).toString()} has decided to quit. He loses!`);
-                c4.reset();
-				msg.reactions.removeAll();
-				this.channels.delete(msg.channel.id);
-          return
-        }
+					await msg.channel.send(`${this.client.users.get(usr).toString()} has decided to quit. He loses!`);
+					c4.reset();
+					msg.reactions.removeAll();
+					this.channels.delete(msg.channel.id);
+					return;
+				}
 				const column = this.numbers.indexOf(res._emoji.name);
 
 				// if the column is full
@@ -88,7 +88,7 @@ module.exports = class extends Command {
 				this.handleProgress(msg, c4);
 			})
 			.catch((e) => {
-      c4.reset();
+				c4.reset();
 				msg.reactions.removeAll();
 				this.channels.delete(msg.channel.id);
 

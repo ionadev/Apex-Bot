@@ -23,6 +23,7 @@ module.exports = class extends Command {
 	}
 
 	async run(msg, [selected, ...reason]) {
+		selected--;
 		reason = reason.length > 0 ? reason.join(' ') : null;
 
 		const modlogs = await this.provider.get('modlogs', msg.guild.id).then(data => data || []);

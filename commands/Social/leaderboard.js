@@ -19,7 +19,7 @@ module.exports = class extends Command {
 			.setTitle(`${msg.guild}'s Leaderboard`, msg.guild.iconURL())
 			.setColor(0xA0D7D1);
 		for (const person of top10) {
-			embed.addField(`${this.client.users.get(person.id).tag}: ${person.points} points.`,)
+			embed.addField(`${this.client.users.get(person.id).tag}: ${person.points} points.`,);
 		}
 	}
 

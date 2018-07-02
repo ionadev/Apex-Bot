@@ -32,7 +32,7 @@ module.exports = class extends Language {
 			RESOLVER_MINMAX_BOTH: (name, min, max, suffix) => `${name} must be between ${min} and ${max}${suffix}.`,
 			RESOLVER_MINMAX_MIN: (name, min, suffix) => `${name} must be greater than ${min}${suffix}.`,
 			RESOLVER_MINMAX_MAX: (name, max, suffix) => `${name} must be less than ${max}${suffix}.`,
-      RESOLVER_INVALID_EMOJI: (name) => `${name} must be a custom emoji tag or valid emoji id.`,
+			RESOLVER_INVALID_EMOJI: (name) => `${name} must be a custom emoji tag or valid emoji id.`,
 			REACTIONHANDLER_PROMPT: 'Which page would you like to jump to?',
 			COMMANDMESSAGE_MISSING: 'Missing one or more required arguments after end of input.',
 			COMMANDMESSAGE_MISSING_REQUIRED: (name) => `${name} is a required argument.`,
@@ -48,13 +48,13 @@ module.exports = class extends Language {
 			INHIBITOR_REQUIRED_CONFIGS: (configs) => `The guild is missing the **${configs.join(', ')}** guild setting${configs.length !== 1 ? 's' : ''} and thus the command cannot run.`,
 			INHIBITOR_RUNIN: (types) => `This command is only available in ${types} channels`,
 			INHIBITOR_RUNIN_NONE: (name) => `The ${name} command is not configured to run in any channel.`,
-      
-      // custom prompts
-      CUSTOMPROMPT_FIGHT: 'Who would you like to fight?',
-      CUSTOMPROMPT_EMOTE: 'What emote would you like to display?',
-      CUSTOMPROMPT_SUBREDDIT: 'What subreddit would you like to view?',
-      
-      // system commandd
+
+			// custom prompts
+			CUSTOMPROMPT_FIGHT: 'Who would you like to fight?',
+			CUSTOMPROMPT_EMOTE: 'What emote would you like to display?',
+			CUSTOMPROMPT_SUBREDDIT: 'What subreddit would you like to view?',
+
+			// system commandd
 			COMMAND_EVAL_DESCRIPTION: 'Evaluates arbitrary Javascript. Reserved for bot owner.',
 			COMMAND_UNLOAD: (type, name) => `✅ Unloaded ${type}: ${name}`,
 			COMMAND_UNLOAD_DESCRIPTION: 'Unloads the klasa piece.',
@@ -78,9 +78,9 @@ module.exports = class extends Language {
 					'The above link is generated requesting the minimum permissions required to use every command currently.',
 					'I know not all permissions are right for every server, so don\'t be afraid to uncheck any of the boxes.',
 					'If you try to use a command that requires more permissions than the bot is granted, it will let you know.'
-				].join(' ')),
+				].join(' '))
 			],
-      COMMAND_EVAL_DESCRIPTION: 'Evaluates arbitrary Javascript. Reserved for bot owner.',
+			COMMAND_EVAL_DESCRIPTION: 'Evaluates arbitrary Javascript. Reserved for bot owner.',
 			COMMAND_EVAL_EXTENDEDHELP: [
 				'The eval command evaluates code as-in, any error thrown from it will be handled.',
 				'It also uses the flags feature. Write --silent, --depth=number or --async to customize the output.',
@@ -150,96 +150,96 @@ module.exports = class extends Language {
 				`• Node.js    :: ${processVersion}`
 			],
 			COMMAND_STATS_DESCRIPTION: 'Provides some details about the bot and stats.',
-      
-      // fun
-      COMMAND_SLAP_YOURSELF: 'You can\'t slap yourself lmao.',
-      COMMAND_CATFACT: (fact) => `📢 **Catfact**: *${fact}*`,
-      COMMAND_COINFLIP_MULTIPLE: (coins, heads, tails) => `You flipped ${coins} coins. ${heads} ${heads === 1 ? 'was' : 'were'} heads, and ${tails} ${tails === 1 ? 'was' : 'were'} tails.`,
-      COMMAND_COINFLIP: (coin) => `You flipped ${coin}.`,
-      COMMAND_URBAN_MAX: (entries) => `No entry found. Maximum entries: **${entries}**`,
-      COMMAND_RESPECT: 'Press 🇫 to pay respects.',
-      COMMAND_POKEMON_STOPPED: 'A game of Pokémon is already in progress.',
-      COMMAND_POKEMON_HELP: 'You have 15 seconds. Who\'s that Pokémon?',
-      COMMAND_POKEMON_CORRECT: (name) => `Good job. It *was* ${name}!`,
-      COMMAND_POKEMON_WRONG: (name) => `Too bad, it was **${name}.**`,
-      COMMAND_POKEMON_TIMEOUT: (name) => `Time's up. It was ${name}.`,
-      COMMAND_GAME_CHALLENGE: (user) => `${user}, do you accept this challenge?`,
-      COMMAND_GAME_OCCURING: 'Only one game may be occuring per channel.',
-      COMMAND_GAME_NOBOTS: 'You cannot challenge bots',
-      COMMAND_GAME_YOURSELF: 'You can\'t challenge yourself you loner.',
-      COMMAND_GAME_DECLINED: 'Looks like they declined...',
-      COMMAND_GAME_LOADING: 'Loading...',
-      COMMAND_C4_WIN: (user) => `🎉 The winner is <@${user}>!`,
-      COMMAND_C4_MAXMOVES: 'No more possible moves. It\'s a draw!',
-      COMMAND_C4_TIMEOUT: (user) => `Time up! <@${user}> loses.`,
-      COMMAND_C4_COLLUMNFULL: (user) => `<@${user}>, that column is already full. Try again.`,
-      COMMAND_C4_QUIT: (user) => `${user} has quit. He loses!`,
-      COMMAND_FIGHT_TURN: (user, msg, opponent, userHP, oppoHP) => [
-        `${user.toString()}, do you **fight**, **guard**, **special** or **run**?`,
-        `**${msg.author.username}**: ${userHP}HP`,
-        `**${opponent.username}**: ${oppoHP}HP`
-      ].join('\n'),
-      COMMAND_FIGHT_TIMEOUT: 'Time!',
-      COMMAND_FIGHT_DONE: (msg, opponent, userHP, oppoHP) => [
-        'The match is over!',
-        `**Winner:** ${userHP > oppoHP ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`}`,
-        `**Loser:** ${userHP > oppoHP ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`}`
-      ],
-      COMMAND_ILLEGAL_UNICODE: 'Only standard unicode characters are accepted.',
-      
-      // misc
-      COMMAND_EMOTE_DESCRIPTION: 'Shows you an emote of a custom Discord emoji.',
-      COMMAND_HELPMENU_DESCRIPTION: 'Toggles the helpmenu.',
-      COMMAND_HELPMENU_INFOPAGE: [
-        'Use the reactions to navigate through the menu.',
-        'When you see a command of interest, find the reaction of the same number.',
-        'To change a page forward use ▶',
-        'To change a page back use ◀',
-        'To stop the helpmenu, press the ⏹ to make to bot stop, and delete the help menu.',
-        'The page number is always displayed at the lower-left of the embed.'
-      ].join('\n'),
-      COMMAND_HELPMENU_CHOSEN: (cmd) => `You chose the command ${cmd.name}.`,
-      COMMAND_SUBREDDIT_DESCRIPTION: 'Gets an entry from a subreddit.',
-      COMMAND_SUBREDDIT_EXTENDED: [
-        'Prefixing your command with hot, random, new or top will filter reddit posts accordingly.',
-        'Example: Apex, reddit hot clashofcland'
-      ].join('\n'),
-      COMMAND_SUBREDDIT_INVALID: 'Invalid subreddit.',
-      COMMAND_SUBREDDIT_NONSFW: 'Cannot display NSFW content in an SFW channel.',
-      COMMAND_SUBREDDIT_OUTPUT: (reddit) => `${reddit.title} submitted by ${reddit.author} in ${reddit.subreddit_name_prefixed}\n${reddit.url}`,
-      
-      // announcement
-      COMMAND_ANNOUNCE_NOCHANNEL: 'Set an announcement role using the conf command, or use the --nomention flag to avoid mentioning the announcement role.',
-      COMMAND_ANNOUNCE_SUCCESS: (channel) => `Succesfully posted announcement in ${channel.toString()}`,
-      COMMAND_ANNOUNCE_NOPOST: (channel) => `I do not have permission to send messages in ${channel.toString()}`,
-      COMMAND_SUBSCRIBE_NOROLE: 'There is no subscriber role configured in this server.',
-      COMMAND_SUBSCRIBE_ROLE: (action, role) => `${action} role **${role.name}**.`,
-      
-      // music
-      COMMAND_ADD_NOTFOUND: 'Not found.',
-      COMMAND_ADD_SONGADDED: (song) => `🎵 Added **${song}** to the queue. 🎶`,
-      COMMAND_AUTOPLAY: (state) => `YouTube autoplay has been ${state ? 'enabled' : 'disabled'}.`,
-      COMMAND_MUSIC_NOVC: 'You are not connected in a voice channel.',
-      COMMAND_MUSIC_NOCONNECT: 'I do not have enough permissions to connect to your voice channel. I am missing the CONNECT permission.',
-      COMMAND_MUSIC_NOSPEAK: 'I can connect... but not speak. Please turn on this permission so I can emit music.',
-      COMMAND_JOIN: (vc) => `Succesfully joined the voicr channel ${vc}`,
-      COMMAND_MUSIC_PAUSED: 'The stream is already paused.',
-      COMMAND_MUSIC_PAUSE: '⏸ Paused',
-      COMMAND_MUSIC_NODJ: 'You are not the current DJ and cannot perform this action.',
-      COMMAND_PLAY_ADDFIRST: (pre) => `Add some songs to the queue first with ${pre}add`,
-      
-      //Moderation
-      COMMAND_BAN_SUCCESS: (user, reason) => `Successfully banned the member ${user.tag}${reason ? `\nWith reason of: ${reason}` : ''}`,
-      COMMAND_KICK_SUCCESS: (user, reason) => `Successfully kicked the member ${user.tag}${reason ? `\nWith reason of: ${reason}` : ''}`,
-      COMMAND_KICK_HIGHERROLE: 'You may not execute this command on this member.',
-      COMMAND_KICK_FAIL: 'I am not able to kick this member, sorry.',
-      COMMAND_MUTE_NOMEMBER: 'You must supply a member to mute.',
-      COMMAND_MUTE_POINTLESS: 'Why mute somebody if he can speak anyway?',
-      COMMAND_MUTE_EQUALMEMBER:  'You may not mute equal members.',
-      COMMAND_MUTE_NOROLE: 'The mute role does not exist. Has it been deleted?',
-      COMMAND_MUTE_UNMUTE_SUCCESS: (member) => `Unmuted **${member.user.tag}**.`,
-      COMMAND_MUTE_SUCCESS: (member) => `Muted **${member.user.tag}**.`,
-      
+
+			// fun
+			COMMAND_SLAP_YOURSELF: 'You can\'t slap yourself lmao.',
+			COMMAND_CATFACT: (fact) => `📢 **Catfact**: *${fact}*`,
+			COMMAND_COINFLIP_MULTIPLE: (coins, heads, tails) => `You flipped ${coins} coins. ${heads} ${heads === 1 ? 'was' : 'were'} heads, and ${tails} ${tails === 1 ? 'was' : 'were'} tails.`,
+			COMMAND_COINFLIP: (coin) => `You flipped ${coin}.`,
+			COMMAND_URBAN_MAX: (entries) => `No entry found. Maximum entries: **${entries}**`,
+			COMMAND_RESPECT: 'Press 🇫 to pay respects.',
+			COMMAND_POKEMON_STOPPED: 'A game of Pokémon is already in progress.',
+			COMMAND_POKEMON_HELP: 'You have 15 seconds. Who\'s that Pokémon?',
+			COMMAND_POKEMON_CORRECT: (name) => `Good job. It *was* ${name}!`,
+			COMMAND_POKEMON_WRONG: (name) => `Too bad, it was **${name}.**`,
+			COMMAND_POKEMON_TIMEOUT: (name) => `Time's up. It was ${name}.`,
+			COMMAND_GAME_CHALLENGE: (user) => `${user}, do you accept this challenge?`,
+			COMMAND_GAME_OCCURING: 'Only one game may be occuring per channel.',
+			COMMAND_GAME_NOBOTS: 'You cannot challenge bots',
+			COMMAND_GAME_YOURSELF: 'You can\'t challenge yourself you loner.',
+			COMMAND_GAME_DECLINED: 'Looks like they declined...',
+			COMMAND_GAME_LOADING: 'Loading...',
+			COMMAND_C4_WIN: (user) => `🎉 The winner is <@${user}>!`,
+			COMMAND_C4_MAXMOVES: 'No more possible moves. It\'s a draw!',
+			COMMAND_C4_TIMEOUT: (user) => `Time up! <@${user}> loses.`,
+			COMMAND_C4_COLLUMNFULL: (user) => `<@${user}>, that column is already full. Try again.`,
+			COMMAND_C4_QUIT: (user) => `${user} has quit. He loses!`,
+			COMMAND_FIGHT_TURN: (user, msg, opponent, userHP, oppoHP) => [
+				`${user.toString()}, do you **fight**, **guard**, **special** or **run**?`,
+				`**${msg.author.username}**: ${userHP}HP`,
+				`**${opponent.username}**: ${oppoHP}HP`
+			].join('\n'),
+			COMMAND_FIGHT_TIMEOUT: 'Time!',
+			COMMAND_FIGHT_DONE: (msg, opponent, userHP, oppoHP) => [
+				'The match is over!',
+				`**Winner:** ${userHP > oppoHP ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`}`,
+				`**Loser:** ${userHP > oppoHP ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`}`
+			],
+			COMMAND_ILLEGAL_UNICODE: 'Only standard unicode characters are accepted.',
+
+			// misc
+			COMMAND_EMOTE_DESCRIPTION: 'Shows you an emote of a custom Discord emoji.',
+			COMMAND_HELPMENU_DESCRIPTION: 'Toggles the helpmenu.',
+			COMMAND_HELPMENU_INFOPAGE: [
+				'Use the reactions to navigate through the menu.',
+				'When you see a command of interest, find the reaction of the same number.',
+				'To change a page forward use ▶',
+				'To change a page back use ◀',
+				'To stop the helpmenu, press the ⏹ to make to bot stop, and delete the help menu.',
+				'The page number is always displayed at the lower-left of the embed.'
+			].join('\n'),
+			COMMAND_HELPMENU_CHOSEN: (cmd) => `You chose the command ${cmd.name}.`,
+			COMMAND_SUBREDDIT_DESCRIPTION: 'Gets an entry from a subreddit.',
+			COMMAND_SUBREDDIT_EXTENDED: [
+				'Prefixing your command with hot, random, new or top will filter reddit posts accordingly.',
+				'Example: Apex, reddit hot clashofcland'
+			].join('\n'),
+			COMMAND_SUBREDDIT_INVALID: 'Invalid subreddit.',
+			COMMAND_SUBREDDIT_NONSFW: 'Cannot display NSFW content in an SFW channel.',
+			COMMAND_SUBREDDIT_OUTPUT: (reddit) => `${reddit.title} submitted by ${reddit.author} in ${reddit.subreddit_name_prefixed}\n${reddit.url}`,
+
+			// announcement
+			COMMAND_ANNOUNCE_NOCHANNEL: 'Set an announcement role using the conf command, or use the --nomention flag to avoid mentioning the announcement role.',
+			COMMAND_ANNOUNCE_SUCCESS: (channel) => `Succesfully posted announcement in ${channel.toString()}`,
+			COMMAND_ANNOUNCE_NOPOST: (channel) => `I do not have permission to send messages in ${channel.toString()}`,
+			COMMAND_SUBSCRIBE_NOROLE: 'There is no subscriber role configured in this server.',
+			COMMAND_SUBSCRIBE_ROLE: (action, role) => `${action} role **${role.name}**.`,
+
+			// music
+			COMMAND_ADD_NOTFOUND: 'Not found.',
+			COMMAND_ADD_SONGADDED: (song) => `🎵 Added **${song}** to the queue. 🎶`,
+			COMMAND_AUTOPLAY: (state) => `YouTube autoplay has been ${state ? 'enabled' : 'disabled'}.`,
+			COMMAND_MUSIC_NOVC: 'You are not connected in a voice channel.',
+			COMMAND_MUSIC_NOCONNECT: 'I do not have enough permissions to connect to your voice channel. I am missing the CONNECT permission.',
+			COMMAND_MUSIC_NOSPEAK: 'I can connect... but not speak. Please turn on this permission so I can emit music.',
+			COMMAND_JOIN: (vc) => `Succesfully joined the voicr channel ${vc}`,
+			COMMAND_MUSIC_PAUSED: 'The stream is already paused.',
+			COMMAND_MUSIC_PAUSE: '⏸ Paused',
+			COMMAND_MUSIC_NODJ: 'You are not the current DJ and cannot perform this action.',
+			COMMAND_PLAY_ADDFIRST: (pre) => `Add some songs to the queue first with ${pre}add`,
+
+			// Moderation
+			COMMAND_BAN_SUCCESS: (user, reason) => `Successfully banned the member ${user.tag}${reason ? `\nWith reason of: ${reason}` : ''}`,
+			COMMAND_KICK_SUCCESS: (user, reason) => `Successfully kicked the member ${user.tag}${reason ? `\nWith reason of: ${reason}` : ''}`,
+			COMMAND_KICK_HIGHERROLE: 'You may not execute this command on this member.',
+			COMMAND_KICK_FAIL: 'I am not able to kick this member, sorry.',
+			COMMAND_MUTE_NOMEMBER: 'You must supply a member to mute.',
+			COMMAND_MUTE_POINTLESS: 'Why mute somebody if he can speak anyway?',
+			COMMAND_MUTE_EQUALMEMBER: 'You may not mute equal members.',
+			COMMAND_MUTE_NOROLE: 'The mute role does not exist. Has it been deleted?',
+			COMMAND_MUTE_UNMUTE_SUCCESS: (member) => `Unmuted **${member.user.tag}**.`,
+			COMMAND_MUTE_SUCCESS: (member) => `Muted **${member.user.tag}**.`
+
 		};
 	}
 
