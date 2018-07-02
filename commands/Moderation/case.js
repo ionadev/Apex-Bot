@@ -19,7 +19,7 @@ module.exports = class extends Command {
 	}
 
 	async run(msg, [caseNum]) {
-		caseNum--;
+
 		const modlogs = await this.provider.get('modlogs', msg.guild.id).then(data => data.logs || []);
 		const log = modlogs[caseNum];
 		if (!log) throw 'There is no log under that case.';
