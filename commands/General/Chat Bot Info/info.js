@@ -1,5 +1,5 @@
 const { Command } = require('klasa');
-const package = require('../../../package.json');
+const packagee = require('../../../package.json');
 
 module.exports = class extends Command {
 
@@ -13,7 +13,7 @@ module.exports = class extends Command {
 
 	async run(msg) {
 		return msg.send([
-			`<:apex:417996870045138944> **Apex v${package.version}** is a multipurpose discord bot with 24/7 uptime, a wide range of commands, performance and other features.`,
+			`<:apex:417996870045138944> **Apex v${packagee.version}** is a multipurpose discord bot with 24/7 uptime, a wide range of commands, performance and other features.`,
 			'Apex is built using the framework Klasa, built upon Discord.js.',
 			'',
 			'**Core Commands**:',
