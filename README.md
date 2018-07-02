@@ -1,5 +1,6 @@
 ## Apex
 
+[![Discord Bots](https://discordbots.org/api/widget/331366307872243714.png)](https://discordbots.org/bot/331366307872243714)
 [<img src="https://canary.discordapp.com/api/guilds/411898639737421824/widget.png?style=banner2">](https://discord.gg/Kcez3AZ)
 
 Apex is a multipurpose Discord Bot that can suit all your server needs. Apex is coded in JavaScript with [discord.js](https://discord.js.org/) using the [klasa](https://klasa.js.org/) framework. 
