@@ -41,7 +41,7 @@ module.exports = class extends Command {
 	}
 
 	get provider() {
-		return this.client.providers.default.db;
+		return this.client.providers.default;
 	}
 
 };
