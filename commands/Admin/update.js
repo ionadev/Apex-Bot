@@ -11,7 +11,7 @@ module.exports = class extends Command {
 
 	async run(msg) {
 		const { error, stderr, stdout } = await this.exec('git pull https://github.com/Soumil07/Apex-Bot.git');
-		if (!error) {
+		if (error) {
 			await msg.send(`ERROR: ${util.codeBlock('', stderr)}`);
 		} else {
 			if (stdout.toString().toLowerCase().includes('Already up-to-date')) return msg.send('Repo already up to date.');
