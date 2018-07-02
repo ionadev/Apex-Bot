@@ -2,7 +2,7 @@ const config = require('./config');
 const { ShardingManager } = require('discord.js');
 const Logger = require('./modules/Logger');
 
-const manager = new ShardingManager('./apex', {
+const manager = new ShardingManager('./apex.js', {
 	totalShards: 'auto',
 	respawn: true,
 	token: config.TOKEN
