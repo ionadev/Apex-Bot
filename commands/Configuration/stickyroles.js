@@ -12,7 +12,7 @@ module.exports = class extends Command {
 			usage: '[nobots]',
 			extendedHelp: ['If sticky roles are enabled a person leaves and rejoins, Apex will give him his roles back.',
 				'This makes those roles "stick". Disable sticky roles by using this command when they are enabled.'
-			].join('\n');
+			].join('\n')
 		});
 	}
 
