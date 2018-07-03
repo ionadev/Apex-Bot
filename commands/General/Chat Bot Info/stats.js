@@ -24,11 +24,11 @@ module.exports = class extends Command {
 		const commandsRun = this.client.usedCommands.reduce((prev, val) => val.count + prev, 0);
 		const [popularCommand] = this.client.usedCommands.sort((a, b) => a.count > b.count ? -1 : 1);
 		const embed = new this.client.methods.Embed()
-			.setAuthor(this.client.user.username, this.client.avatarURL())
+			.setAuthor(this.client.user.username, this.client.user.avatarURL())
 			.setColor(color)
 			.setTimestamp();
 		embed.setDescription(`To add Apex to your Discord server, use the \`${msg.guildConfigs.prefix}invite\` command.`)
-			.addField('Commands', `**Processed**: ${commandsRun}\n**Most used**: ${popularCommand}`, true)
+			.addField('Commands', `**Processed**: ${commandsRun}\n**Most used**: ${popularCommand[0]}`, true)
 			.addField('Memory', `**RAM (Used)**: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
 **RAM (Total)**: ${Math.round(100 * (process.memoryUsage().heapTotal / 1048576)) / 100} MB
 **CPU Usage**: ${Math.round(loadavg()[0] * 100) / 100}%`, true)
