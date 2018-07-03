@@ -1,4 +1,5 @@
 const { Command, Duration } = require('klasa');
+const { MessageAttachment } = require('discord.js');
 const { loadavg } = require('os');
 const splashy = require('splashy')();
 const { HighChartsConstructor } = require('chart-constructor');
@@ -35,37 +36,45 @@ module.exports = class extends Command {
 **Shard**: ${this.client.shard.id}`);
 
 		if (msg.flags.commands) {
-			const make = new HighChartsConstructor();
-			make.seriesDataSetter([
-				{
-					type: 'line',
-					color: '#3498DB',
-					data: this.client.health.cmd.slice(-10),
-					name: 'Commands per minute.'
-				}
-			]);
-			make.titleOptions({ text: 'Chart' });
-			embed.setImage(await make.toBuffer());
+			const chart = await new HighChartsConstructor()
+				.seriesDataSetter([
+					{
+						type: 'line',
+						color: '#3498DB',
+						data: this.client.health.cmd.slice(-10),
+						name: 'Commands per minute.'
+					}
+				])
+				.titleOptions({ text: 'Chart' })
+				.toBuffer();
+			embed
+				.attachFiles(new MessageAttachment(chart, 'chart.png'))
+				.setImage('attachment://chart.png');
 		} else if (msg.flags.memory) {
-			const make = new HighChartsConstructor();
-			make.seriesDataSetter([
-				{
-					type: 'line',
-					color: '#3498DB',
-					data: this.client.health.ram.slice(-10),
-					name: 'RAM (Used)'
-				}
-			],
-			[
-				{
-					type: 'line',
-					color: '9113a4',
-					data: this.client.health.prc.slice(-10),
-					name: 'RAM (Total)'
-				}
-			]);
-			make.titleOptions({ text: 'Chart' });
-			embed.setImage(await make.toBuffer());
+			const chart = await new HighChartsConstructor()
+				.seriesDataSetter(
+					[
+						{
+							type: 'line',
+							color: '#3498DB',
+							data: this.client.health.ram.slice(-10),
+							name: 'RAM (Used)'
+						}
+					],
+					[
+						{
+							type: 'line',
+							color: '9113a4',
+							data: this.client.health.prc.slice(-10),
+							name: 'RAM (Total)'
+						}
+					]
+				)
+				.titleOptions({ text: 'Chart' })
+				.toBuffer();
+			embed
+				.attachFiles(new MessageAttachment(chart, 'chart.png'))
+				.setImage('attachment://chart.png');
 		}
 
 		return msg.sendEmbed(embed);
