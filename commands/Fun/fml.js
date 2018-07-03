@@ -13,8 +13,8 @@ module.exports = class extends Command {
 	}
 
 	async run(msg) {
-		const { body } = await request.get('http://www.fmylife.com/random');
-		const root = HTMLParser.parse(body);
+		const { text } = await request.get('http://www.fmylife.com/random');
+		const root = HTMLParser.parse(JSON.parse(text));
 		const article = root.querySelector('.block a');
 		const downdoot = root.querySelector('.vote-down');
 		const updoot = root.querySelector('.vote-up');
