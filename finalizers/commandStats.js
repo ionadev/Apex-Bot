@@ -3,11 +3,11 @@ const { Finalizer } = require('klasa');
 module.exports = class extends Finalizer {
 
 	async run(message) {
-		if (!this.client.health.commands.has(message.command.name)) {
-			this.client.health.commands.set(message.command.name, { count: 0 });
+		this.client.health.cmd[95]++;
+		if (!this.client.usedCommands.has(message.command.name)) {
+			this.client.usedCommands.set(message.command.name, { count: 0 });
 		}
-		const cmd = this.client.health.commands.get(message.command.name);
-		cmd.count++;
+		this.client.usedCommands.get(message.command.name).count++;
 	}
 
 };
