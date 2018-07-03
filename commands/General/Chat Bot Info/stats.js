@@ -52,24 +52,20 @@ module.exports = class extends Command {
 				.setImage('attachment://chart.png');
 		} else if (msg.flags.memory) {
 			const chart = await new HighChartsConstructor()
-				.seriesDataSetter(
-					[
-						{
-							type: 'line',
-							color: '#3498DB',
-							data: this.client.health.ram.slice(-10),
-							name: 'RAM (Used)'
-						}
-					],
-					[
-						{
-							type: 'line',
-							color: '9113a4',
-							data: this.client.health.prc.slice(-10),
-							name: 'RAM (Total)'
-						}
-					]
-				)
+				.seriesDataSetter([
+					{
+						type: 'line',
+						color: '#3498DB',
+						data: this.client.health.ram.slice(-10),
+						name: 'RAM (Used)'
+					},
+					{
+						type: 'line',
+						color: '9113a4',
+						data: this.client.health.prc.slice(-10),
+						name: 'RAM (Total)'
+					}
+				])
 				.titleOptions({ text: 'Chart' })
 				.toBuffer();
 			embed
