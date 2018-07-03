@@ -25,7 +25,7 @@ module.exports = class extends Command {
 
 	async run(msg, [search, resultNum = 0]) {
 		const url = `http://api.urbandictionary.com/v0/define?term=${search}`;
-		const body = await snek.get(url).then(data => JSON.parse(data.text));
+		const body = await snek.get(url).then(data => data.body);
 		if (resultNum > 1) resultNum--;
 
 		const result = body.list[resultNum];

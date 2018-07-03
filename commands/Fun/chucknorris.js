@@ -14,8 +14,8 @@ module.exports = class extends Command {
 	}
 
 	async run(msg) {
-		const { text } = await snekfetch.get('https://api.icndb.com/jokes/random');
-		return msg.sendMessage(`📢 **Chuck Norris joke:** *${JSON.parse(text).value.joke}*`);
+		const { body } = await snekfetch.get('https://api.icndb.com/jokes/random');
+		return msg.sendMessage(`📢 **Chuck Norris joke:** *${body.value.joke}*`);
 	}
 
 };
