@@ -61,7 +61,7 @@ module.exports = class extends Command {
 					},
 					{
 						type: 'line',
-						color: '9113a4',
+						color: '#9113A4',
 						data: this.client.health.prc.slice(-10),
 						name: 'RAM (Total)'
 					}
