@@ -12,10 +12,12 @@
   "dependencies": {
     "canvas": "github:Automattic/node-canvas",
     "canvas-constructor": "^1.0.1",
+    "chart-constructor": "github:QuarksWorks/chartConstructor",
     "discord.js": "github:discordjs/discord.js#master",
     "discord.js-lavalink": "github:MrJacz/discord.js-lavalink",
     "eslint": "^4.19.1",
     "fast-html-parser": "^1.0.1",
+    "highcharts-export-server": "^2.0.13",
     "http-nextra": "TridentBot/http-nextra",
     "imgflipper": "^1.0.1",
     "js-couchdb": "^1.0.0",

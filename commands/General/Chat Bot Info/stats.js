@@ -1,31 +1,73 @@
 const { Command, Duration } = require('klasa');
 const { loadavg } = require('os');
 const splashy = require('splashy')();
+const { HighChartsConstructor } = require('chart-constructor');
 
 module.exports = class extends Command {
 
 	constructor(...args) {
 		super(...args, {
 			guarded: true,
-			description: (msg) => msg.language.get('COMMAND_STATS_DESCRIPTION')
+			description: (msg) => msg.language.get('COMMAND_STATS_DESCRIPTION'),
+			extendedHelp: [
+				'Flags:',
+				'',
+				'--commands: Shows command statistics.',
+				'--memory: Shows memory statisitcs.'
+			].join('\n')
 		});
 	}
 
 	async run(msg) {
 		const [color] = await splashy.fromUrl(this.client.user.avatarURL({ format: 'png' }));
-		return msg.sendEmbed(new this.client.methods.Embed()
-			.setAuthor(this.client.user.username, this.client.user.avatarURL())
+		const commandsRun = this.client.usedCommands.reduce((prev, val) => val.count + prev, 0);
+		const [popularCommand] = this.client.usedCommands.sort((a, b) => a.count > b.count ? -1 : 1);
+		const embed = new this.client.methods.Embed()
+			.setAuthor(this.client.user.username, this.client.avatarURL())
 			.setColor(color)
-			.addField('Guilds', this.client.guilds.size, true)
-			.addField('Members', this.client.guilds.reduce((prev, val) => val.memberCount + prev, 0), true)
-			.addField('Channels', this.client.channels.size, true)
-			.addField('Node.js', process.version, true)
-			.addField('RAM (Used)', `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB`, true)
-			.addField('RAM (Total)', `${Math.round(100 * (process.memoryUsage().heapTotal / 1048576)) / 100}MB`, true)
-			.addField('CPU Usage', `${Math.round(loadavg()[0] * 100) / 100}%`, true)
-			.addField('Uptime', Duration.toNow(Date.now() - (process.uptime() * 1000)), true)
-			.addField('Shard', this.client.shard.id)
-			.addField('Commands run', this.client.commandsUsed));
+			.setTimestamp();
+		embed.setDescription(`To add Apex to your Discord server, use the \`${msg.guildConfigs.prefix}invite\` command.`)
+			.addField('Commands', `**Processed**: ${commandsRun}\n**Most used**: ${popularCommand}`, true)
+			.addField('Memory', `**RAM (Used)**: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
+**RAM (Total)**: ${Math.round(100 * (process.memoryUsage().heapTotal / 1048576)) / 100} MB
+**CPU Usage**: ${Math.round(loadavg()[0] * 100) / 100}%`, true)
+			.addField('Other', `**Uptime**: ${Duration.toNow(Date.now() - (process.uptime() * 1000))}
+**Shard**: ${this.client.shard.id}`);
+
+		if (msg.flags.commands) {
+			const make = new HighChartsConstructor();
+			make.seriesSetter([
+				{
+					type: 'line',
+					color: '#3498DB',
+					data: this.client.health.cmd[95].slice(-10),
+					name: 'Commands per minute.'
+				}
+			]);
+			make.titleOptions({ text: 'Chart' });
+			embed.setImage(await make.toBuffer());
+		} else if (msg.flags.memory) {
+			const make = new HighChartsConstructor();
+			make.seriesSetter([
+				{
+					type: 'line',
+					color: '#3498DB',
+					data: this.client.health.ram[95].slice(-10),
+					name: 'RAM (Used)'
+				}
+			],
+			[
+				{
+					type: 'line',
+					color: '9113a4',
+					data: this.client.health.prc[95].slice(-10),
+					name: 'RAM (Total)'
+				}
+			]);
+			make.titleOptions({ text: 'Chart' });
+		}
+
+		return msg.sendEmbed(embed);
 	}
 
 };
