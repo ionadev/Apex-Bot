@@ -36,7 +36,7 @@ module.exports = class extends Command {
 
 		if (msg.flags.commands) {
 			const make = new HighChartsConstructor();
-			make.seriesSetter([
+			make.seriesDataSetter([
 				{
 					type: 'line',
 					color: '#3498DB',
@@ -48,7 +48,7 @@ module.exports = class extends Command {
 			embed.setImage(await make.toBuffer());
 		} else if (msg.flags.memory) {
 			const make = new HighChartsConstructor();
-			make.seriesSetter([
+			make.seriesDataSetter([
 				{
 					type: 'line',
 					color: '#3498DB',
