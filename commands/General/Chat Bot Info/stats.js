@@ -55,13 +55,13 @@ module.exports = class extends Command {
 				.seriesDataSetter([
 					{
 						type: 'line',
-						color: '#FF8000',
+						color: '#3498DB',
 						data: this.client.health.ram.slice(-10),
 						name: 'RAM (Used)'
 					},
 					{
 						type: 'line',
-						color: '#9113A4',
+						color: '#FF8000',
 						data: this.client.health.prc.slice(-10),
 						name: 'RAM (Total)'
 					}
