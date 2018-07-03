@@ -27,7 +27,7 @@ module.exports = class extends Command {
 			.setColor(color)
 			.setTimestamp();
 		embed.setDescription(`To add Apex to your Discord server, use the \`${msg.guildConfigs.prefix}invite\` command.`)
-			.addField('Commands', `**Processed**: ${commandsRun}\n**Most used**: ${popularCommand}`, true)
+			.addField('Commands', `**Processed**: ${commandsRun}\n**Most used**: ${popularCommand[0]}`, true)
 			.addField('Memory', `**RAM (Used)**: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
 **RAM (Total)**: ${Math.round(100 * (process.memoryUsage().heapTotal / 1048576)) / 100} MB
 **CPU Usage**: ${Math.round(loadavg()[0] * 100) / 100}%`, true)
@@ -40,7 +40,7 @@ module.exports = class extends Command {
 				{
 					type: 'line',
 					color: '#3498DB',
-					data: this.client.health.cmd[95].slice(-10),
+					data: this.client.health.cmd.slice(-10),
 					name: 'Commands per minute.'
 				}
 			]);
@@ -52,7 +52,7 @@ module.exports = class extends Command {
 				{
 					type: 'line',
 					color: '#3498DB',
-					data: this.client.health.ram[95].slice(-10),
+					data: this.client.health.ram.slice(-10),
 					name: 'RAM (Used)'
 				}
 			],
@@ -60,7 +60,7 @@ module.exports = class extends Command {
 				{
 					type: 'line',
 					color: '9113a4',
-					data: this.client.health.prc[95].slice(-10),
+					data: this.client.health.prc.slice(-10),
 					name: 'RAM (Total)'
 				}
 			]);
