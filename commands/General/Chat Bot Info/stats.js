@@ -65,6 +65,7 @@ module.exports = class extends Command {
 				}
 			]);
 			make.titleOptions({ text: 'Chart' });
+			embed.setImage(await make.toBuffer());
 		}
 
 		return msg.sendEmbed(embed);
