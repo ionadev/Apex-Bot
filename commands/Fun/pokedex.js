@@ -22,7 +22,7 @@ module.exports = class extends Command {
 
 		res = await snek.get(`https://pokemondb.net/pokedex/${args.split(' ').join('-')}`).catch(() => null);
 		if (!res) throw 'Invalid Pokemon.';
-		const root = HTMLParser.parse(res.text);
+		const root = HTMLParser.parse(res.body);
 		// raw
 		const titleRaw = root.querySelector('title');
 		const imgRaw = root.querySelector('.figure');

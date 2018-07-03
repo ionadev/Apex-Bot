@@ -14,7 +14,7 @@ module.exports = class extends Command {
 
 	async run(msg) {
 		const res = await request.get('http://www.fmylife.com/random');
-		const root = HTMLParser.parse(res.text);
+		const root = HTMLParser.parse(res.body);
 		const article = root.querySelector('.block a');
 		const downdoot = root.querySelector('.vote-down');
 		const updoot = root.querySelector('.vote-up');
