@@ -12,7 +12,7 @@ module.exports = class extends Command {
 			cooldown: 5,
 			description: 'Shows you an emote.',
 			extendedHelp: 'This command shows an image of a custom server emote.',
-			usage: '<emote:emoji>'
+			usage: '<emote:customemote>'
 		});
 
 		this
