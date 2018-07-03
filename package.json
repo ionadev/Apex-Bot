@@ -12,7 +12,7 @@
   "dependencies": {
     "canvas": "github:Automattic/node-canvas",
     "canvas-constructor": "^1.0.1",
-    "chart-constructor": "github:QuarksWorks/chartConstructor",
+    "chart-constructor": "github:QuarksWorks/chartConstructor#master",
     "discord.js": "github:discordjs/discord.js#master",
     "discord.js-lavalink": "github:MrJacz/discord.js-lavalink",
     "eslint": "^4.19.1",
