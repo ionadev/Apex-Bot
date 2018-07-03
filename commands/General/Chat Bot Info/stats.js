@@ -23,7 +23,7 @@ module.exports = class extends Command {
 		const commandsRun = this.client.usedCommands.reduce((prev, val) => val.count + prev, 0);
 		const [popularCommand] = this.client.usedCommands.sort((a, b) => a.count > b.count ? -1 : 1);
 		const embed = new this.client.methods.Embed()
-			.setAuthor(this.client.user.username, this.client.avatarURL())
+			.setAuthor(this.client.user.username, this.client.user.avatarURL())
 			.setColor(color)
 			.setTimestamp();
 		embed.setDescription(`To add Apex to your Discord server, use the \`${msg.guildConfigs.prefix}invite\` command.`)
