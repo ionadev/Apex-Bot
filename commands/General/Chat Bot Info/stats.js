@@ -48,7 +48,7 @@ module.exports = class extends Command {
 				.titleOptions({ text: 'Chart' })
 				.toBuffer();
 			embed
-				.attachFiles(new MessageAttachment(chart, 'chart.png'))
+				.attachFiles([new MessageAttachment(chart, 'chart.png')])
 				.setImage('attachment://chart.png');
 		} else if (msg.flags.memory) {
 			const chart = await new HighChartsConstructor()
@@ -73,7 +73,7 @@ module.exports = class extends Command {
 				.titleOptions({ text: 'Chart' })
 				.toBuffer();
 			embed
-				.attachFiles(new MessageAttachment(chart, 'chart.png'))
+				.attachFiles([new MessageAttachment(chart, 'chart.png')])
 				.setImage('attachment://chart.png');
 		}
 
