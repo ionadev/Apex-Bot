@@ -41,7 +41,7 @@ module.exports = class extends Command {
 					{
 						type: 'line',
 						color: '#3498DB',
-						data: this.client.health.cmd[95].slice(-10),
+						data: this.client.health.cmd.slice(-10),
 						name: 'Commands per minute.'
 					}
 				])
@@ -57,7 +57,7 @@ module.exports = class extends Command {
 						{
 							type: 'line',
 							color: '#3498DB',
-							data: this.client.health.ram[95].slice(-10),
+							data: this.client.health.ram.slice(-10),
 							name: 'RAM (Used)'
 						}
 					],
@@ -65,7 +65,7 @@ module.exports = class extends Command {
 						{
 							type: 'line',
 							color: '9113a4',
-							data: this.client.health.prc[95].slice(-10),
+							data: this.client.health.prc.slice(-10),
 							name: 'RAM (Total)'
 						}
 					]
