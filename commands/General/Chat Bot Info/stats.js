@@ -4,6 +4,14 @@ const { loadavg } = require('os');
 const splashy = require('splashy')();
 const { HighChartsConstructor } = require('chart-constructor');
 
+const now = new Date();
+const plotOptions = {
+	series: {
+		pointStart: now.setHours(now.getHours() - 1),
+		pointInterval: 60 * 1000
+	}
+};
+
 module.exports = class extends Command {
 
 	constructor(...args) {
@@ -40,6 +48,7 @@ module.exports = class extends Command {
 
 		if (msg.flags.commands) {
 			const chart = await new HighChartsConstructor()
+				.plotOptionsOptions(plotOptions)
 				.seriesDataSetter([
 					{
 						type: 'line',
@@ -55,6 +64,7 @@ module.exports = class extends Command {
 				.setImage('attachment://chart.png');
 		} else if (msg.flags.memory) {
 			const chart = await new HighChartsConstructor()
+				.plotOptionsOptions(plotOptions)
 				.seriesDataSetter([
 					{
 						type: 'line',
