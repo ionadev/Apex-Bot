@@ -19,18 +19,12 @@
     "fast-html-parser": "^1.0.1",
     "highcharts-export-server": "^2.0.13",
     "http-nextra": "TridentBot/http-nextra",
-    "imgflipper": "^1.0.1",
     "js-couchdb": "^1.0.0",
     "klasa": "dirigeants/klasa",
-    "prism-media": "github:hydrabolt/prism-media",
-    "redis-nextra": "^0.1.0",
     "rethinkdbdash": "^2.3.31",
-    "simple-youtube-api": "^5.0.2",
-    "snekfetch": "^4.0.4",
     "splashy": "^2.0.3",
     "snekfetch": "^3.6.4",
-    "twemoji": "^11.0.0",
-    "ytdl-core": "^0.20.2"
+    "twemoji": "^11.0.0"
   },
   "devDependencies": {
     "eslint-config-klasa": "github:dirigeants/klasa-lint"
