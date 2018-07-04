@@ -28,6 +28,9 @@ module.exports = class extends Command {
 			.setColor(color)
 			.setTimestamp();
 		embed.setDescription(`To add Apex to your Discord server, use the \`${msg.guildConfigs.prefix}invite\` command.`)
+			.addField('Stats', `**Guilds**: ${this.client.guilds.size}
+**Channels**: ${this.client.channels.size}
+**Members**: ${this.client.guilds.reduce((prev, val) => val.memberCount + prev, 0)}`)
 			.addField('Commands', `**Processed**: ${commandsRun}\n**Most used**: ${popularCommand[0]}`, true)
 			.addField('Memory', `**RAM (Used)**: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
 **RAM (Total)**: ${Math.round(100 * (process.memoryUsage().heapTotal / 1048576)) / 100} MB

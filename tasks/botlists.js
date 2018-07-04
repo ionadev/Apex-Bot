@@ -12,7 +12,7 @@ module.exports = class extends Task {
 
 	async updateDBL() {
 		return snek
-			.get(`https://discordbots.org/api/bots/${this.client.user.id}`)
+			.post(`https://discordbots.org/api/bots/${this.client.user.id}`)
 			.set('Authorization', config.BOTLISTS.DBL)
 			.send({ server_count: this.client.guilds.size })
 			.then(() => this.client.emit('log', 'Posted stats to DBL.'))
@@ -21,7 +21,7 @@ module.exports = class extends Task {
 
 	async updateDBots() {
 		return snek
-			.get(`https://bots.discord.pw/api/bots/${this.client.user.id}`)
+			.post(`https://bots.discord.pw/api/bots/${this.client.user.id}`)
 			.set('Authorization', config.BOTLISTS.DBOTS)
 			.send({ server_count: this.client.guilds.size })
 			.then(() => this.client.emit('log', 'Posted stats to Dbots.'))
