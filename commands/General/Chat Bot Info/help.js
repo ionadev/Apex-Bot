@@ -29,7 +29,7 @@ module.exports = class extends Command {
 			return message.sendMessage(info, { code: 'asciidoc' });
 		}
 
-		if (message.channel.permissionsFor(this.client.user).has(['MANAGE_REACTIONS', 'MANAGE_MESSAGES'])) {
+		if (message.channel.permissionsFor(this.client.user).has(['MANAGE_MESSAGES'])) {
 			return (await this.buildDisplay(message)).run(await message.send('Loading Commands...'));
 		}
 
