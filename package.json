@@ -12,7 +12,7 @@
   "dependencies": {
     "canvas": "github:Automattic/node-canvas",
     "canvas-constructor": "^1.0.1",
-    "chart-constructor": "github:QuarksWorks/chartConstructor",
+    "chart-constructor": "github:QuarksWorks/chartConstructor#master",
     "discord.js": "github:discordjs/discord.js#master",
     "discord.js-lavalink": "github:MrJacz/discord.js-lavalink",
     "eslint": "^4.19.1",
@@ -26,6 +26,7 @@
     "redis-nextra": "^0.1.0",
     "rethinkdbdash": "^2.3.31",
     "simple-youtube-api": "^5.0.2",
+    "snekfetch": "^4.0.4",
     "splashy": "^2.0.3",
     "snekfetch": "^3.6.4",
     "twemoji": "^11.0.0",
