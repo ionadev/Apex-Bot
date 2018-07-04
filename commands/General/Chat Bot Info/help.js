@@ -41,7 +41,7 @@ module.exports = class extends Command {
 
 	async buildHelp(message) {
 		const commands = await this._fetchCommands(message);
-		const { prefix } = message.guildConfigs.prefix;
+		const { prefix } = message.guildConfigs;
 
 		const helpMessage = [];
 		for (const [category, list] of commands) {
