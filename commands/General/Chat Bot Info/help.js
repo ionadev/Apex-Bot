@@ -50,7 +50,7 @@ module.exports = class extends Command {
 		const method = this.client.user.bot ? 'author' : 'channel';
 		return message[method].send(await this.buildHelp(message), { split: { char: '\n' } })
 			.then(() => { if (message.channel.type !== 'dm' && this.client.user.bot) message.sendMessage(message.language.get('COMMAND_HELP_DM')); })
-			.catch(async() => { if (message.channel.type !== 'dm' && this.client.user.bot) message.sendMessage(await this.buildHelp(message), { split: { char: '\n' }); }) });
+			.catch(async() => { if (message.channel.type !== 'dm' && this.client.user.bot) message.sendMessage(await this.buildHelp(message), { split: { char: '\n' } }) });
 	}
 
 	async buildHelp(message) {
