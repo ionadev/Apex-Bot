@@ -4,7 +4,7 @@ module.exports = class extends Command {
 
 	constructor(...args) {
 		super(...args, {
-			usage: '<announcement:str{2,52}>',
+			usage: '<announcement:str{2,1980}>',
 			description: 'Sends an announcement to the announcement channel.',
 			extendedHelp: 'Flags usage:\n\n--nomention: Does not mention the announcement role.',
 			requiredConfigs: ['channels.announcement'],
