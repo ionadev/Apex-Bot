@@ -15,8 +15,8 @@ module.exports = class extends Command {
 	async run(msg) {
 		const { player } = msg.guild;
 		if (!player.playing) throw 'Nothing is playing.';
-		if (player.player.paused) throw 'The player is already paused. Maybe resume it?';
-		player.player.pause(true);
+		if (player.connection.paused) throw 'The player is already paused. Maybe resume it?';
+		player.connection.pause(true);
 		return msg.sendMessage('⏸ Paused');
 	}
 
