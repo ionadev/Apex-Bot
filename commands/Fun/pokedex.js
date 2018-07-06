@@ -31,7 +31,7 @@ module.exports = class extends Command {
 
 		// data
 		const pokeName = titleRaw.childNodes[0].rawText.split(' Pokédex')[0];
-		const img = imgRaw.childNodes[1].rawAttrs.split('"')[1];
+		const img = `https://img.pokemondb.net/artwork/${args.split(' ').join('-')}.jpg`;
 		const description = descR2[descR2.length - 1].childNodes[3].childNodes[0].rawText;
 
 		const data = root.querySelectorAll('.vitals-table');
