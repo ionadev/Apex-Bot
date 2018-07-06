@@ -1,5 +1,5 @@
 const { Event } = require.main.exports;
-const { PlayerManager } = require('discord.js');
+const { PlayerManager } = require('discord.js-lavalink');
 const { LAVALINK: { nodes } } = require('../config');
 
 module.exports = class extends Event {
