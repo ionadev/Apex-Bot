@@ -19,7 +19,6 @@
     "fast-html-parser": "^1.0.1",
     "highcharts-export-server": "^2.0.13",
     "http-nextra": "TridentBot/http-nextra",
-    "js-couchdb": "^1.0.0",
     "klasa": "dirigeants/klasa",
     "rethinkdbdash": "^2.3.31",
     "splashy": "^2.0.3",
