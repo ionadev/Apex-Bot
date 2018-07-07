@@ -24,10 +24,9 @@ module.exports = class extends Command {
 
 		const res = await snek.get(`https://pokemondb.net/pokedex/${poke}`);
 		const root = HTMLParser.parse(res.text);
-		const imgRaw = root.querySelector('.figure');
-		const img = imgRaw.childNodes[1].rawAttrs.split('" width')[0].split('="')[1];
 		const titleRaw = root.querySelector('title');
 		const pokeName = titleRaw.childNodes[0].rawText.split(' Pokédex:')[0];
+		const img = `https://img.pokemondb.net/artwork/${pokeName.split(' ').join('-')}.jpg`;
 		this.client.emit('log', `Pokémon took: ${timer.stop()}`);
 
 		const embed = new this.client.methods.Embed()
