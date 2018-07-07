@@ -19,13 +19,13 @@ module.exports = class extends Command {
 		type = type || this.types[Math.floor(Math.random() * this.types.length)];
 
 		const { body } = await snek.get(`https://www.reddit.com/r/${subreddit}/${type}.json`)
-			.catch(() => msg.send(msg.language.get('COMMAND_SUBREDDIT_INVALID')));
+			.catch(() => { throw msg.language.get('COMMAND_SUBREDDIT_INVALID') });
 		if (!body || !body.data) throw msg.language.get('COMMAND_SUBREDDIT_INVALID');
 		let meme;
 
 		if (type === 'random') {
 			meme = body[0].data.children[Math.floor(Math.random() * body[0].data.children.length)].data
-				.catch(() => msg.send(msg.language.get('COMMAND_SUBREDDIT_INVALID')));
+				.catch(() => { throw msg.language.get('COMMAND_SUBREDDIT_INVALID') });
 		} else { meme = body.data.children[Math.floor(Math.random() * body.data.children.length)].data; }
 
 		if (!msg.channel.nsfw && meme.over_18) {
